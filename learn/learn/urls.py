@@ -27,7 +27,8 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     
     
-    path("posts/", include("posts.urls"))
+    path("posts/", include("posts.urls")),
+    path("users/", include("users.urls")),
 ] 
 #  this line of code is for images 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
