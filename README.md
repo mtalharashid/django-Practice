@@ -1,20 +1,20 @@
 # 🚀 Installation & Environment Setup
 
-## 1 Create & Activate Virtual Environment
+### 1 Create & Activate Virtual Environment
 
-### Create virtual environment
+#### Create virtual environment
 `````
 python -m venv venv
 `````
-### Activate (Windows)
+#### Activate (Windows)
 `````
 venv\Scripts\activate
 `````
-### Activate (Mac/Linux)
+#### Activate (Mac/Linux)
 `````
 source venv/bin/activate
 `````
-## 📦 2. Install Django
+### 📦 2. Install Django
 
 `````
 pip install django
@@ -22,40 +22,40 @@ pip install django
 
 Verify installation:
 
+`````
 django-admin --version
+`````
 
-## 🏗️ 3. Create First Django Project
+### 🏗️ 3. Create First Django Project
 
 `````
 django-admin startproject myproject
 `````
 
 #### Move into the project:
-
+`````
 cd myproject
-
+`````
 
 Run the server to test:
 
 python manage.py runserver
 
-<h3>
-🧩 4. Create First App
-</h3>
+### 🧩 4. Create First App
+
 `````
 python manage.py startapp myapp
 `````
 
-Add the app to settings.py:
+#### Add the app to settings.py:
 
+`````
 INSTALLED_APPS = [
     ...
     'myapp',
 ]
-
-<h3>
-🌐 5. Create First URL
-</h3>
+`````
+### 🌐 5. Create First URL
 
 Project-level URL (myproject/urls.py):
 
@@ -69,7 +69,7 @@ urlpatterns = [
 ]
 `````
 
-<h3>👁️ 6. Create First View (myapp/views.py)</h3>
+### 👁️ 6. Create First View (myapp/views.py)
 
 from django.http import HttpResponse
 
@@ -78,18 +78,17 @@ def home(request):
     return HttpResponse("Hello, Django!")
 `````
 
-<h3>📄 7. Create First HTML Template (Optional)</h3>
+### 📄 7. Create First HTML Template (Optional)
 
-Create folder:
+#### Create folder:
 `````
 myapp/
  └── templates/
        └── home.html
 `````
-
 home.html:
 
-<h1>Hello Django Template</h1>
+## Hello Django Template
 
 
 Update the view:
@@ -99,15 +98,12 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 `````
-<h3>
-🗃️ 8. Create First Model
-</h3>
+### 🗃️ 8. Create First Model
 
 myapp/models.py:
 
-from django.db import models
-
 `````
+from django.db import models
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -116,55 +112,50 @@ class Product(models.Model):
         return self.name
 `````
 
-<h3>
-🔧 9. Make Migrations & Apply
-</h3>
+### 🔧 9. Make Migrations & Apply
 
 `````
 python manage.py makemigrations
 python manage.py migrate
 `````
-<h3>
-🖼 10. Install Pillow (needed for ImageField)
-</h3>
+
+### 🖼 10. Install Pillow (needed for ImageField)
+
 `````
 pip install pillow
 `````
 
-Example image model:
+#### Example image model:
 `````
 class Profile(models.Model):
     name = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to='avatars/')
 `````
 
-<h3>
-📬 11. Create First Form
-</h3>
+### 📬 11. Create First Form
 
 myapp/forms.py:
 
-from django import forms
-
 `````
+from django import forms
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)
     email = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
 `````
 
-Use form in a view (views.py):
+#### Use form in a view (views.py):
 
-from django.shortcuts import render
-from .forms import ContactForm
 
 `````
+from django.shortcuts import render
+from .forms import ContactForm
 def contact(request):
     form = ContactForm()
     return render(request, 'contact.html', {'form': form})
 `````
 
-Template contact.html:
+#### Template contact.html:
 
 `````
 <form method="post">
@@ -178,35 +169,36 @@ Add URL:
 `````
 path('contact/', views.contact, name='contact')
 `````
-<h3>
-▶️ 12. Run the Server
-</h3>
+### ▶️ 12. Run the Server
+`````
 python manage.py runserver
+`````
 
+`````
+Visit: http://127.0.0.1:8000/
+`````
 
-Visit:
-http://127.0.0.1:8000/
+# ✅ Summary of Useful Commands
 
-✅ Summary of Useful Commands
-Environment
+### Environment
+
 `````
 python -m venv venv
 source venv/bin/activate
 `````
-Django
+### Django
 `````
 pip install django
 django-admin startproject myproject
 python manage.py startapp myapp
 python manage.py runserver
 `````
-Database
+### Database
 `````
 python manage.py makemigrations
 python manage.py migrate
 `````
-
-Extra
+### Extra
 `````
 pip install pillow
 `````
