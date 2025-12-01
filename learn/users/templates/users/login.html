@@ -7,7 +7,7 @@
 {% block content %}
 
 <h1>Login user</h1>
-<form class="form-with-validation" action="/users/login/" method="POST">
+<form class="form-with-validation" action="{% url 'users:login' %}" method="POST">
     {% csrf_token %}
     {{ form }}
     {% if request.GET.next %}
@@ -15,5 +15,4 @@
     {% endif %}
     <button>Submit</button>
 </form>
-
 {% endblock %}
